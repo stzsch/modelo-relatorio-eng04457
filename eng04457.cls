@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eng04457}[2017/04/03 Modelo de Relatório ENG04457 v1.0]
+\ProvidesClass{eng04457}[2018/01/13 Modelo de Relatório ENG04457 v1.1]
 \LoadClass[a4paper, 12pt]{extarticle} % extarticle é mais flexível com tamanhos de fonte
 
 \RequirePackage[T1]{fontenc} % hifenização
@@ -13,11 +13,11 @@
 \RequirePackage{float} % utilização do parâmetro [H] para figuras e tabelas
 \RequirePackage[labelfont=bf, % legendas em negrito
                 labelsep=period]{caption} % utilização de ponto ao invés de dois pontos em legendas
-\newcommand{\source}[1]{\caption*{\textbf{Fonte} -- {#1}}.}
+\newcommand{\source}[1]{\caption*{\textbf{Fonte} -- {#1}}}
 % \RequirePackage{ragged2e} % alinhamento em tabelas
 \RequirePackage{hhline} % linha horizontal dupla em tabelas
 \RequirePackage{array} % coluna centrada e com tamanho definido em tabelas
-\setlength{\tabcolsep}{0.5cm} % tamanho de coluna em tabelas
+% \setlength{\tabcolsep}{0.5cm} % tamanho de coluna em tabelas
 
 \RequirePackage{geometry} % ajuste de margens
 \geometry{a4paper,tmargin=2.8cm,bmargin=1.75cm,lmargin=1.75cm,rmargin=1.75cm} % valores de margem
@@ -26,15 +26,36 @@
 
 \RequirePackage{fancyhdr} % header
 \pagestyle{fancy}
-\fancyhead[RE,LO]{\textit{\the\headertext} \ \textbf{\the\year}}
-\fancyhead[LE,RO]{\textbf{\thepage}}
-\fancyfoot[CE,CO]{}
-\fancyfoot[LE,RO]{}
+\fancyhead[LH]{\textit{\the\headertext} \ \textbf{\the\year}}
+\fancyhead[RH]{\textbf{\thepage}}
+\fancyfoot[CF]{}
+\fancyfoot[LF,RF]{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+
 %\addtolength{\voffset}{-2cm}
 %\addtolength{\topmargin}{4cm}
 %\addtolength{\headsep}{1cm}
+
+
+
+% cite removido para utilizar biblatex
+
+% \RequirePackage[biblabel]{cite} % citação
+% \renewcommand\citeleft{[}
+% \renewcommand\citeright{]}
+
+
+\RequirePackage{csquotes} % Para biblatex
+\RequirePackage[backend=biber,
+citestyle=authoryear-comp,
+sorting=none,
+maxcitenames=2
+]{biblatex}
+\addbibresource{bibliography.bib}
+\addto{\captionsbrazil}{\renewcommand{\refname}{Referências Bibliográficas}}
+
 
 
 
@@ -59,9 +80,10 @@
   {0em}
   {}
 
-\RequirePackage[biblabel]{cite} % citação
-\renewcommand\citeleft{}
-\renewcommand\citeright{.}
+
+% troca do minipage para quebra de página
+
+\RequirePackage{framed} %
 
 
 \RequirePackage[pdftex]{hyperref} % links
@@ -145,20 +167,24 @@ E-Mails: \the\emails
 \vspace{0.6cm}
 
 {
+\leftskip=1cm
+\rightskip=1cm
 \hfill
-\begin{minipage}{15.5cm}
+%\begin{minipage}{15.5cm}
 
 
 \textbf{Resumo}. \the\resumo
+%\end{minipage}
 
 \vspace{0.5cm}
+%\begin{minipage}{15.5cm}
 
 \textbf{Abstract}. \the\resumoeng
 
 \vspace{0.5cm}
 
 \textbf{Palavras Chave}: \the\keywords
-\end{minipage}
+%\end{minipage}
 \hfill
 }
 
