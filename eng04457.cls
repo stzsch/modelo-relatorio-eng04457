@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{eng04457}[2018/01/13 Modelo de Relatório ENG04457 v1.1]
+\ProvidesClass{eng04457}[2018/01/13 Modelo ENG04457 v1.1]
 \LoadClass[a4paper, 12pt]{extarticle} % extarticle é mais flexível com tamanhos de fonte
 
 \RequirePackage[T1]{fontenc} % hifenização
